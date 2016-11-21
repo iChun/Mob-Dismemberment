@@ -1,0 +1,13 @@
+mobdismemberment.config.prop.gibTime.name=Tempo di vita degli arti
+mobdismemberment.config.prop.gibGroundTime.name=Tempo a terra degli arti
+mobdismemberment.config.prop.blood.name=Effetto sangue
+mobdismemberment.config.prop.bloodCount.name=Quatita delle particelle di sangue
+mobdismemberment.config.prop.greenBlood.name=Colore sangue verde
+mobdismemberment.config.prop.gibPushing.name=Arti spostano i mob
+
+mobdismemberment.config.prop.gibTime.comment=Tempo totale di vita dell'arto
+mobdismemberment.config.prop.gibGroundTime.comment=Tempo di vita dell'arto una volta che ha toccato terra
+mobdismemberment.config.prop.blood.comment=Gli arti hanno sangue?
+mobdismemberment.config.prop.bloodCount.comment=Numero di particelle di sangue per arto
+mobdismemberment.config.prop.greenBlood.comment=Sangue verde al posto di rosso?
+mobdismemberment.config.prop.gibPushing.comment=Gli arti influenzano i percorsi dei mob?

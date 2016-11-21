@@ -1,0 +1,21 @@
+[
+{
+  "modid" : "mobdismemberment",
+  "name" : "MobDismemberment",
+  "version" : "${version}",
+  "url" : "http://ichun.me/mods/mob-dismemberment/",
+  "credits" : "",
+  "authorList": [
+    "iChun"
+  ],
+  "description": "Dismember mobs!",
+  "logoFile" : "",
+  "updateUrl" : "",
+  "parent" : "",
+  "screenshots": [
+  ],
+  "dependencies": [
+    "Forge", "iChunUtil"
+  ]
+}
+]

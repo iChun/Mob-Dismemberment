@@ -1,0 +1,13 @@
+mobdismemberment.config.prop.gibTime.name=Gliedmaß-Lebensdauer
+mobdismemberment.config.prop.gibGroundTime.name=Gliedmaß-Bodenlebensdauer
+mobdismemberment.config.prop.blood.name=Bluteffekte
+mobdismemberment.config.prop.bloodCount.name=Blut-Partikelmenge
+mobdismemberment.config.prop.greenBlood.name=Grünes Blut
+mobdismemberment.config.prop.gibPushing.name=Gliedmaßen bewegen Entitys
+
+mobdismemberment.config.prop.gibTime.comment=Gesamte Lebensdauer von Gliedmaßen
+mobdismemberment.config.prop.gibGroundTime.comment=Lebensdauer von Gliedmaßen, sobald sie den Boden berührt haben
+mobdismemberment.config.prop.blood.comment=Soll zerhacken Blut haben?
+mobdismemberment.config.prop.bloodCount.comment=Menge der Blutpartikel pro Gliedmaß
+mobdismemberment.config.prop.greenBlood.comment=Soll Blut grün anstatt rot sein?
+mobdismemberment.config.prop.gibPushing.comment=Schieben Gliedmaßen aktiv Mobs auf ihrem Weg herum?

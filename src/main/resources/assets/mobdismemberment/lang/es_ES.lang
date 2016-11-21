@@ -1,0 +1,13 @@
+mobdismemberment.config.prop.gibTime.name=Tiempo de vida del miembro
+mobdismemberment.config.prop.gibGroundTime.name=Tiempo en el suelo del miembro
+mobdismemberment.config.prop.blood.name=Sangre
+mobdismemberment.config.prop.bloodCount.name=Número de particulas de sangre
+mobdismemberment.config.prop.greenBlood.name=Color de la sangre verde
+mobdismemberment.config.prop.gibPushing.name=El miembro empuja entidades
+
+mobdismemberment.config.prop.gibTime.comment=Tiempo que los miembros pueden vivir
+mobdismemberment.config.prop.gibGroundTime.comment=Tiempo de vida de los miembros cuando tocan el suelo
+mobdismemberment.config.prop.blood.comment=¿Debería tener sangre el miembro?
+mobdismemberment.config.prop.bloodCount.comment=Cantidad de particulas de sangre por miembro
+mobdismemberment.config.prop.greenBlood.comment=¿Debería ser la sangre verde en vez de roja?
+mobdismemberment.config.prop.gibPushing.comment=¿Los miembros empujan activamente a las entidades en su camino?

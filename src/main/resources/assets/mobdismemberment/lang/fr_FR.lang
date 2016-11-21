@@ -1,0 +1,13 @@
+mobdismemberment.config.prop.gibTime.name=Durée de vie d'un membre
+mobdismemberment.config.prop.gibGroundTime.name=Durée au sol d'un membre
+mobdismemberment.config.prop.blood.name=Particules de sang
+mobdismemberment.config.prop.bloodCount.name=Quantité de particules de sang
+mobdismemberment.config.prop.greenBlood.name=Sang vert
+mobdismemberment.config.prop.gibPushing.name=Les membres poussent les entités
+
+mobdismemberment.config.prop.gibTime.comment=Durée de vie totale d'un membre
+mobdismemberment.config.prop.gibGroundTime.comment=Durée de vie d'un membre une fois qu'il a touché le sol
+mobdismemberment.config.prop.blood.comment=Est-ce qu'un membre doit saigner ?
+mobdismemberment.config.prop.bloodCount.comment=Quantité de particules de sang générées par membre découpé
+mobdismemberment.config.prop.greenBlood.comment=Est-ce que le sang devrait être vert au lieu d'être rouge ?
+mobdismemberment.config.prop.gibPushing.comment=Est-ce que les membres peuvent pousser les entités ?
