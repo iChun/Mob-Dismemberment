@@ -23,8 +23,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MobDismemberment
 {
     public static final String VERSION = iChunUtil.VERSION_MAJOR + ".0.0";
-    public static final String MOD_ID = "mobdismemberment";
     public static final String MOD_NAME = "MobDismemberment";
+    public static final String MOD_ID = "mobdismemberment";
 
     @Mod.Instance(MOD_ID)
     public static MobDismemberment instance;
