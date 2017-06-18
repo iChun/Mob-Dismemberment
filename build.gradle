@@ -50,6 +50,12 @@ processResources
     }
 }
 
+jar {
+	manifest {
+	    attributes 'FMLAT': 'iChunUtil_at.cfg'
+	}
+}
+
 // deobf jars
 task deobfJar(type: Jar) {
     from sourceSets.main.output
