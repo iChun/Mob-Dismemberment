@@ -38,7 +38,7 @@ public class EventHandlerClient
     @SubscribeEvent
     public void onLivingDeath(LivingDeathEvent event)
     {
-        if(event.getEntity().worldObj.isRemote && (event.getEntityLiving() instanceof EntityZombie || event.getEntityLiving() instanceof EntitySkeleton || event.getEntityLiving() instanceof EntityCreeper) && !event.getEntityLiving().isChild())
+        if(event.getEntity().world.isRemote && (event.getEntityLiving() instanceof EntityZombie || event.getEntityLiving() instanceof EntitySkeleton || event.getEntityLiving() instanceof EntityCreeper) && !event.getEntityLiving().isChild())
         {
             dismemberTimeout.put(event.getEntityLiving(), 2);
         }
@@ -55,10 +55,10 @@ public class EventHandlerClient
     @SubscribeEvent
     public void worldTick(TickEvent.ClientTickEvent event)
     {
-        if(event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().theWorld != null)
+        if(event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().world != null)
         {
             Minecraft mc = Minecraft.getMinecraft();
-            WorldClient world = mc.theWorld;
+            WorldClient world = mc.world;
 
             if(clock != world.getWorldTime() || !world.getGameRules().getBoolean("doDaylightCycle"))
             {
@@ -92,7 +92,7 @@ public class EventHandlerClient
                             {
                                 if(!exploTime.containsKey(ent))
                                 {
-                                    long time = ent.worldObj.getWorldTime() % 24000L;
+                                    long time = ent.world.getWorldTime() % 24000L;
                                     if(time > 23959L)
                                     {
                                         time -= 23999L;
@@ -107,7 +107,7 @@ public class EventHandlerClient
                         {
                             if(!exploTime.containsKey(ent))
                             {
-                                long time = ent.worldObj.getWorldTime() % 24000L;
+                                long time = ent.world.getWorldTime() % 24000L;
                                 if(time > 23959L)
                                 {
                                     time -= 23999L;
@@ -145,7 +145,7 @@ public class EventHandlerClient
 
                     if(e.getValue() <= 0)
                     {
-                        if(dismember(e.getKey().worldObj, e.getKey(), explo))
+                        if(dismember(e.getKey().world, e.getKey(), explo))
                         {
                             e.getKey().setDead();
                         }
@@ -175,12 +175,12 @@ public class EventHandlerClient
         }
         if(living instanceof EntityCreeper)
         {
-            world.spawnEntityInWorld(new EntityGib(world, living, 0, explo));
-            world.spawnEntityInWorld(new EntityGib(world, living, 3, explo));
-            world.spawnEntityInWorld(new EntityGib(world, living, 6, explo));
-            world.spawnEntityInWorld(new EntityGib(world, living, 7, explo));
-            world.spawnEntityInWorld(new EntityGib(world, living, 8, explo));
-            world.spawnEntityInWorld(new EntityGib(world, living, 9, explo));
+            world.spawnEntity(new EntityGib(world, living, 0, explo));
+            world.spawnEntity(new EntityGib(world, living, 3, explo));
+            world.spawnEntity(new EntityGib(world, living, 6, explo));
+            world.spawnEntity(new EntityGib(world, living, 7, explo));
+            world.spawnEntity(new EntityGib(world, living, 8, explo));
+            world.spawnEntity(new EntityGib(world, living, 9, explo));
         }
         else
         {
@@ -197,7 +197,7 @@ public class EventHandlerClient
                         }
                     }
                 }
-                world.spawnEntityInWorld(new EntityGib(world, living, i, explo));
+                world.spawnEntity(new EntityGib(world, living, i, explo));
             }
 
             if(living instanceof EntityZombie && MobDismemberment.config.blood == 1)
@@ -221,7 +221,7 @@ public class EventHandlerClient
                     mY += (double)((living.getRNG().nextFloat() - living.getRNG().nextFloat()) * 0.1F);
                     mZ += Math.sin((double)var5) * (double)var4;
 
-                    RendererHelper.spawnParticle(new ParticleBlood(living.worldObj, living.posX, living.posY + 0.5D + (living.getRNG().nextDouble() * 0.7D), living.posZ, living.motionX + mX, living.motionY + mY, living.motionZ + mZ, living instanceof EntityPlayer));
+                    RendererHelper.spawnParticle(new ParticleBlood(living.world, living.posX, living.posY + 0.5D + (living.getRNG().nextDouble() * 0.7D), living.posZ, living.motionX + mX, living.motionY + mY, living.motionZ + mZ, living instanceof EntityPlayer));
                 }
             }
         }
