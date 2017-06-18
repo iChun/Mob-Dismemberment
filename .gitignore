@@ -6,6 +6,8 @@
 
 # IDEA Files #
 *.iml
+*.ipr
+*.iws
 /.idea
 
 # Gradle #
