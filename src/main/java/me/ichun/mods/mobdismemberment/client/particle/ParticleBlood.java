@@ -38,14 +38,14 @@ public class ParticleBlood extends Particle
         prevPosX = posX;
         prevPosY = posY;
         prevPosZ = posZ;
-        if(motionX != 0.0D && motionZ != 0.0D && !isCollided)
+        if(motionX != 0.0D && motionZ != 0.0D && !onGround)
         {
             motionY -= (double)this.particleGravity;
-            moveEntity(motionX, motionY, motionZ);
+            move(motionX, motionY, motionZ);
             motionX *= 0.98000001907348633D;
             motionY *= 0.98000001907348633D;
             motionZ *= 0.98000001907348633D;
-            if(isCollided)
+            if(onGround)
             {
                 motionX *= 0.69999998807907104D;
                 motionZ *= 0.69999998807907104D;
@@ -55,43 +55,43 @@ public class ParticleBlood extends Particle
     }
 
     @Override
-    public void moveEntity(double x, double y, double z) // Fix mojangbug
+    public void move(double x, double y, double z) // Fix mojangbug
     {
         double d3 = x;
         double d4 = y;
         double d5 = z;
         if(this.canCollide)
         {
-            List<AxisAlignedBB> list = this.worldObj.getCollisionBoxes((Entity)null, this.getEntityBoundingBox().addCoord(x, y, z));
+            List<AxisAlignedBB> list = this.world.getCollisionBoxes((Entity)null, this.getBoundingBox().addCoord(x, y, z));
 
             for(AxisAlignedBB axisalignedbb : list)
             {
-                y = axisalignedbb.calculateYOffset(this.getEntityBoundingBox(), y);
+                y = axisalignedbb.calculateYOffset(this.getBoundingBox(), y);
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0D, y, 0.0D));
+            this.setBoundingBox(this.getBoundingBox().offset(0.0D, y, 0.0D));
 
             for(AxisAlignedBB axisalignedbb1 : list)
             {
-                x = axisalignedbb1.calculateXOffset(this.getEntityBoundingBox(), x);
+                x = axisalignedbb1.calculateXOffset(this.getBoundingBox(), x);
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(x, 0.0D, 0.0D));
+            this.setBoundingBox(this.getBoundingBox().offset(x, 0.0D, 0.0D));
 
             for(AxisAlignedBB axisalignedbb2 : list)
             {
-                z = axisalignedbb2.calculateZOffset(this.getEntityBoundingBox(), z);
+                z = axisalignedbb2.calculateZOffset(this.getBoundingBox(), z);
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0D, 0.0D, z));
+            this.setBoundingBox(this.getBoundingBox().offset(0.0D, 0.0D, z));
         }
         else
         {
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(x, y, z));
+            this.setBoundingBox(this.getBoundingBox().offset(x, y, z));
         }
 
         this.resetPositionToBB();
-        this.isCollided = d4 != y && d4 < 0.0D;
+        this.onGround = d4 != y && d4 < 0.0D;
 
         if(d3 != x)
         {

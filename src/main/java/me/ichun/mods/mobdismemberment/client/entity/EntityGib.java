@@ -3,6 +3,7 @@ package me.ichun.mods.mobdismemberment.client.entity;
 import me.ichun.mods.mobdismemberment.common.MobDismemberment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityMinecartTNT;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -42,7 +43,7 @@ public class EntityGib extends Entity
         parent = gibParent;
         type = gibType;
 
-        liveTime = (int)worldObj.getWorldTime();
+        liveTime = (int)world.getWorldTime();
 
         setLocationAndAngles(parent.posX, parent.getEntityBoundingBox().minY, parent.posZ, parent.rotationYaw, parent.rotationPitch);
         rotationYaw = parent.prevRenderYawOffset;
@@ -217,7 +218,7 @@ public class EntityGib extends Entity
             motionZ *= 1D / 0.92D;
         }
         super.onUpdate();
-        moveEntity(motionX, motionY, motionZ);
+        move(MoverType.SELF, motionX, motionY, motionZ);
 
         this.motionY -= 0.08D;
 
@@ -249,7 +250,7 @@ public class EntityGib extends Entity
 
         if(MobDismemberment.config.gibPushing == 1)
         {
-            List var2 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(0.15D, 0.0D, 0.15D));
+            List var2 = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(0.15D, 0.0D, 0.15D));
             if(var2 != null && !var2.isEmpty())
             {
                 Iterator var10 = var2.iterator();
@@ -287,7 +288,7 @@ public class EntityGib extends Entity
         {
             groundTime = 0;
         }
-        if(liveTime + MobDismemberment.config.gibTime < (int)worldObj.getWorldTime())
+        if(liveTime + MobDismemberment.config.gibTime < (int)world.getWorldTime())
         {
             setDead();
         }

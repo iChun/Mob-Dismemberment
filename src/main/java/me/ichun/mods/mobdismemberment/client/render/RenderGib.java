@@ -39,7 +39,7 @@ public class RenderGib extends Render<EntityGib>
         bindEntityTexture(gib);
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, MathHelper.clamp_float(gib.groundTime >= MobDismemberment.config.gibGroundTime ? 1.0F - (gib.groundTime - MobDismemberment.config.gibGroundTime + par9) / 20F : 1.0F, 0F, 1F));
+        GlStateManager.color(1.0F, 1.0F, 1.0F, MathHelper.clamp(gib.groundTime >= MobDismemberment.config.gibGroundTime ? 1.0F - (gib.groundTime - MobDismemberment.config.gibGroundTime + par9) / 20F : 1.0F, 0F, 1F));
         GlStateManager.alphaFunc(GL11.GL_GREATER, 0.003921569F);
 
         GlStateManager.translate(par2, par4, par6);
