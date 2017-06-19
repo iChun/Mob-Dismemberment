@@ -52,7 +52,7 @@ processResources
 
 jar {
 	manifest {
-	    attributes 'FMLAT': 'iChunUtil_at.cfg'
+	    attributes 'FMLAT': 'MobDismemberment_at.cfg'
 	}
 }
 
