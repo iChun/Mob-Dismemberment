@@ -1,8 +1,10 @@
 package me.ichun.mods.mobdismemberment.client.entity;
 
+import me.ichun.mods.ichunutil.common.iChunUtil;
 import me.ichun.mods.mobdismemberment.common.MobDismemberment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityMinecartTNT;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -32,7 +34,7 @@ public class EntityGib extends Entity
         type = 0; //0 == head; 1 == left arm; 2 == right arm; 3 == head; 4 == left leg; 5 == right leg; 6+ creeperfeet.
 
         groundTime = 0;
-        liveTime = (int)world.getWorldTime();
+        liveTime = iChunUtil.eventHandlerClient.ticks;
         ignoreFrustumCheck = true;
     }
 
@@ -42,7 +44,7 @@ public class EntityGib extends Entity
         parent = gibParent;
         type = gibType;
 
-        liveTime = (int)worldObj.getWorldTime();
+        liveTime = iChunUtil.eventHandlerClient.ticks;
 
         setLocationAndAngles(parent.posX, parent.getEntityBoundingBox().minY, parent.posZ, parent.rotationYaw, parent.rotationPitch);
         rotationYaw = parent.prevRenderYawOffset;
@@ -170,7 +172,7 @@ public class EntityGib extends Entity
         {
             double mag = 1.0D;
             double mag2 = 1.0D;
-            double dist = explo.getDistanceToEntity(parent);
+            double dist = explo.getDistance(parent);
             dist = Math.pow(dist / 2D, 2);
             if(dist < 0.1D)
             {
@@ -217,7 +219,7 @@ public class EntityGib extends Entity
             motionZ *= 1D / 0.92D;
         }
         super.onUpdate();
-        moveEntity(motionX, motionY, motionZ);
+        move(MoverType.SELF, motionX, motionY, motionZ);
 
         this.motionY -= 0.08D;
 
@@ -249,7 +251,7 @@ public class EntityGib extends Entity
 
         if(MobDismemberment.config.gibPushing == 1)
         {
-            List var2 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(0.15D, 0.0D, 0.15D));
+            List var2 = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().grow(0.15D, 0.0D, 0.15D));
             if(var2 != null && !var2.isEmpty())
             {
                 Iterator var10 = var2.iterator();
@@ -287,7 +289,7 @@ public class EntityGib extends Entity
         {
             groundTime = 0;
         }
-        if(liveTime + MobDismemberment.config.gibTime < (int)worldObj.getWorldTime())
+        if(liveTime + MobDismemberment.config.gibTime < iChunUtil.eventHandlerClient.ticks)
         {
             setDead();
         }
