@@ -16,8 +16,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = MobDismemberment.MOD_ID, name = MobDismemberment.MOD_NAME,
         version = MobDismemberment.VERSION,
-        guiFactory = "me.ichun.mods.ichunutil.common.core.config.GenericModGuiFactory",
-        dependencies = "required-after:ichunutil@[" + iChunUtil.VERSION_MAJOR +".0.1," + (iChunUtil.VERSION_MAJOR + 1) + ".0.0)",
+        guiFactory = iChunUtil.GUI_CONFIG_FACTORY,
+        dependencies = "required-after:ichunutil@[" + iChunUtil.VERSION_MAJOR +".0.2," + (iChunUtil.VERSION_MAJOR + 1) + ".0.0)",
         acceptedMinecraftVersions = iChunUtil.MC_VERSION_RANGE,
         clientSideOnly = true
 )
